@@ -16,8 +16,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build Debug APK
-        run: gradle assembleDebug
+      - name: Fix XML & Build Debug APK
+        run: |
+          sed -i 's|http://android.com|http://android.com|g' app/src/main/AndroidManifest.xml
+          gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
