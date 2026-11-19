@@ -67,7 +67,7 @@ class TrackerOverlayService : Service() {
         vd = mp?.createVirtualDisplay("RLX", w, h, m.densityDpi, DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR, ir?.surface, null, null)
         ir?.setOnImageAvailableListener({ r ->
             val img = r.acquireLatestImage() ?: return@setOnImageAvailableListener
-            val p = img.planes
+            val p = img.planes[0]
             view.processFrame(p.buffer, w, h, p.rowStride, m.widthPixels, m.heightPixels)
             img.close()
         }, null)
