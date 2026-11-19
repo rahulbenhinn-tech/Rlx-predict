@@ -16,11 +16,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Install Gradle & Build APK
-        run: |
-          wget -q https://gradle.org
-          unzip -q gradle-8.7-bin.zip
-          ./gradle-8.7/bin/gradle assembleDebug
+      - name: Build Debug APK
+        run: gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
