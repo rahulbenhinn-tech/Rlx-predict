@@ -43,10 +43,10 @@ class TrackerCanvasView(context: Context) : View(context) {
             2 -> status = "3/4: Tap BOTTOM Rim"
             3 -> status = "4/4: Tap GREEN 0 Ring"
             4 -> {
-                cx = pts.x; cy = pts.y
-                rx = abs(pts.x - cx).coerceAtLeast(30f)
-                ry = abs(pts.y - cy).coerceAtLeast(30f)
-                inRatio = hypot((pts.x - cx) / rx, (pts.y - cy) / ry).coerceIn(0.45f, 0.92f)
+                cx = pts[0].x; cy = pts[0].y
+                rx = abs(pts[1].x - cx).coerceAtLeast(30f)
+                ry = abs(pts[2].y - cy).coerceAtLeast(30f)
+                inRatio = hypot((pts[3].x - cx) / rx, (pts[3].y - cy) / ry).coerceIn(0.45f, 0.92f)
                 calib = false; status = "Ready! Tap PLAY"
             }
         }
